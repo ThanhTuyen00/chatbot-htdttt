@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>
+		Chat bot tư vấn trang phục
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<link rel="icon" th:href="@{/img/bot.png}" />
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/bot.css">
+</head>
+
+<body style="display: block;margin: 0;padding: 0;box-sizing: border-box;">
+	<main id="main" style="padding-top: 5vh;">
+		<div id="bot-container">
+			<div id="bot-inner">
+				<div id="bot"></div>
+			</div>
+		</div>
+		<input class="input-field" id="input" type="text" placeholder="Nhập tên của bạn" autocomplete="off"
+			autofocus="true" style="display: none;" />
+		<input class="input-field" id="input2" type="number" placeholder="Nhập số đo ngực (ví dụ: 90)"
+			autocomplete="off" autofocus="true" style="display: none;" />
+		<input class="input-field" id="input3" type="number" placeholder="Nhập số đo eo (ví dụ: 90)" autocomplete="off"
+			autofocus="true" style="display: none;" />
+		<input class="input-field" id="input4" type="number" placeholder="Nhập số đo hông cao (ví dụ: 90)"
+			autocomplete="off" autofocus="true" style="display: none;" />
+		<input class="input-field" id="input7" type="number" placeholder="Nhập số đo hông (ví dụ: 90)"
+			autocomplete="off" autofocus="true" style="display: none;" />
+		<input class="input-field" id="input5" type="number" placeholder="Nhập chiều cao của bạn (đơn vị cm, ví dụ 150)"
+			autocomplete="off" autofocus="true" style="display: none;" />
+		<input class="input-field" id="input6" type="number" placeholder="Nhập cân nặng của bạn (đơn vị kg, ví dụ 50)"
+			autocomplete="off" autofocus="true" style="display: none;" />
+	</main>
+	<div th:insert="includes.html :: footer"></div>
+</body>
+<script src="js/chat.js"></script>
+<script src="js/handle.js"></script>
+
+</html>

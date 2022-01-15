@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<header th:fragment="header" style="margin: 0;">
+		<nav class="navbar navbar-expand-sm navbar-dark">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="btn btn-info" th:href="@{'/'}" style="margin-right:3vh;">Chat bot tư vấn lựa chọn trang
+						phục</a>
+				</li>
+				<li class="nav-item">
+					<a class="btn btn-danger" th:href="@{'/'}" style="margin-right:3vh;">Tập các luật</a>
+				</li>
+				<li class="nav-item">
+					<a class="btn btn-dark" th:href="@{'/'}">Hướng dẫn sử dụng</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<footer th:fragment="footer"
+		style="position: relative;left:50%;top:50%;text-align: center;color: aqua;margin-top: 15vh;">
+		© <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span>
+		Copyright: <strong>
+			Nhóm 12 - Các hệ thống dựa trên tri thức</strong>
+	</footer>
+
+</body>
+
+</html>
