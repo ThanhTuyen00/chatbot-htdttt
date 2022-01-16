@@ -1,4 +1,5 @@
 var person = {};
+var isStart = 0;
 var res = function() {
 	var data = person;
 	$.ajax({
@@ -16,15 +17,100 @@ var res = function() {
 			bot.appendChild(response);
 			inner.scrollTop = inner.scrollHeight;
 			response.classList.add('activated');
+			
+			const response2 = document.createElement('div');
+			response2.classList.add('chat-response');
+			response2.innerHTML = jsonResult.data;
+			response2.innerHTML = chat[29].text;
+			bot.appendChild(response2);
+			inner.scrollTop = inner.scrollHeight;
+			response2.classList.add('activated');
 		}
 	});
 }
+
 const bot = function() {
 	const bot = document.getElementById('bot');
 	const container = document.getElementById('bot-container');
 	const inner = document.getElementById('bot-inner');
 	let restartButton = null;
-
+	const inputField = document.getElementById("input0");
+	inputField.style.display = "block";
+	inputField.addEventListener("keydown", (e) => {
+		if (e.code === "Enter") {
+			let input = inputField.value;
+			if (input === '') {
+				return;
+			}
+			inputField.value = "";
+			const request = document.createElement('div');
+			request.classList.add('chat-ask');
+			request.innerHTML = input;
+			insertNewChatItem(request);
+			const response = document.createElement('div');
+			response.classList.add('chat-response');
+			let input1 = input.toLowerCase();
+			if (input1.includes('xin chào') || input1.includes('xjn chào') || input1.includes('xin chao')
+				|| input1.includes('xjn chao') || input1.includes('hi') || input1.includes('hello')) {
+				if (isStart == 1) {
+					printTextBot(chat[27]);
+				} else {
+					var x = parseInt(Math.floor(Math.random() * 3));
+					if (x == 0) {
+						response.innerHTML = chat[20].text1;
+					} else if (x == 1) {
+						response.innerHTML = chat[20].text2;
+					} else if (x == 2) {
+						response.innerHTML = chat[20].text3;
+					}
+					insertNewChatItem(response);
+				}
+			} else if (input1.includes('bạn tên là gì') || input1.includes('ban ten la gi') || input1.includes('who are you')) {
+				if (isStart == 1) {
+					printTextBot(chat[27]);
+				} else {
+					printTextBot(chat[21]);
+				}
+			} else if (input1 == 'start') {
+				if (isStart == 0) {
+					isStart = 1;
+					printResponse2();
+				} else {
+					printTextBot(chat[27]);
+				}
+			} else if (input1 == 'version') {
+				if (isStart == 1) {
+					printTextBot(chat[27]);
+				} else {
+					printTextBot(chat[23]);
+				}
+			} else if (input1 == 'description') {
+				if (isStart == 1) {
+					printTextBot(chat[27]);
+				} else {
+					printTextBot(chat[24]);
+				}
+			} else if (input1 == 'help') {
+				if (isStart == 1) {
+					printTextBot(chat[27]);
+				} else {
+					printTextBot(chat[25]);
+				}
+			} else if (input1 == 'case') {
+				if (isStart == 1) {
+					printTextBot(chat[27]);
+				} else {
+					printTextBot(chat[26]);
+				}
+			} else {
+				if (isStart == 1) {
+					printTextBot(chat[28]);
+				} else {
+					printTextBot(chat[22]);
+				}
+			}
+		}
+	});
 	const sleep = function(ms) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	};
@@ -44,12 +130,12 @@ const bot = function() {
 		var step1 = chat[1];
 		await sleep(200);
 		printTextBot(step1);
-		printOptions(step1.options);
 	};
 	const printResponse2 = async function() {
 		var step2 = chat[2];
 		await sleep(200);
 		printTextBot(step2);
+		document.getElementById("input0").style.display = "none";
 		const inputField = document.getElementById("input");
 		inputField.style.display = "block";
 		inputField.addEventListener("keydown", (e) => {
@@ -65,6 +151,7 @@ const bot = function() {
 				person.name = input;
 				insertNewChatItem(request);
 				inputField.style.display = "none";
+				document.getElementById("input0").style.display = "block";
 				printResponse3();
 			}
 		});
@@ -127,6 +214,7 @@ const bot = function() {
 		var step8 = chat[8];
 		await sleep(200);
 		printTextBot(step8);
+		document.getElementById("input0").style.display = "none";
 		const inputField = document.getElementById("input2");
 		inputField.style.display = "block";
 		inputField.addEventListener("keydown", (e) => {
@@ -153,6 +241,7 @@ const bot = function() {
 				person.bust = input;
 				insertNewChatItem(request);
 				inputField.style.display = "none";
+				document.getElementById("input0").style.display = "block";
 				printResponse9();
 			}
 		});
@@ -161,6 +250,7 @@ const bot = function() {
 		var step9 = chat[9];
 		await sleep(200);
 		printTextBot(step9);
+		document.getElementById("input0").style.display = "none";
 		const inputField = document.getElementById("input3");
 		inputField.style.display = "block";
 		inputField.addEventListener("keydown", (e) => {
@@ -187,6 +277,7 @@ const bot = function() {
 				person.waist = input;
 				insertNewChatItem(request);
 				inputField.style.display = "none";
+				document.getElementById("input0").style.display = "block";
 				printResponse10();
 			}
 		});
@@ -195,6 +286,7 @@ const bot = function() {
 		var step10 = chat[10];
 		await sleep(200);
 		printTextBot(step10);
+		document.getElementById("input0").style.display = "none";
 		const inputField = document.getElementById("input4");
 		inputField.style.display = "block";
 		inputField.addEventListener("keydown", (e) => {
@@ -221,6 +313,7 @@ const bot = function() {
 				person.highHip = input;
 				insertNewChatItem(request);
 				inputField.style.display = "none";
+				document.getElementById("input0").style.display = "block";
 				printResponse100();
 			}
 		});
@@ -229,6 +322,7 @@ const bot = function() {
 		var step100 = chat[100];
 		await sleep(200);
 		printTextBot(step100);
+		document.getElementById("input0").style.display = "none";
 		const inputField = document.getElementById("input7");
 		inputField.style.display = "block";
 		inputField.addEventListener("keydown", (e) => {
@@ -298,6 +392,7 @@ const bot = function() {
 				response.innerHTML = 'Có vẻ như vóc dáng của bạn là ' + person.bodyShape;
 				insertNewChatItem(response);
 				inputField.style.display = "none";
+				document.getElementById("input0").style.display = "block";
 				printResponse11();
 			}
 		});
@@ -312,6 +407,7 @@ const bot = function() {
 		var step12 = chat[12];
 		await sleep(200);
 		printTextBot(step12);
+		document.getElementById("input0").style.display = "none";
 		const inputField = document.getElementById("input5");
 		inputField.style.display = "block";
 		inputField.addEventListener("keydown", (e) => {
@@ -349,6 +445,7 @@ const bot = function() {
 				person.height = input;
 				insertNewChatItem(request);
 				inputField.style.display = "none";
+				document.getElementById("input0").style.display = "block";
 				printResponse13();
 			}
 		});
@@ -357,6 +454,7 @@ const bot = function() {
 		var step13 = chat[13];
 		await sleep(200);
 		printTextBot(step13);
+		document.getElementById("input0").style.display = "none";
 		const inputField = document.getElementById("input6");
 		inputField.style.display = "block";
 		inputField.addEventListener("keydown", (e) => {
@@ -397,7 +495,13 @@ const bot = function() {
 				response.innerHTML = 'Có vẻ như thể trạng của bạn là ' + person.bodyCondition;
 				insertNewChatItem(response);
 				inputField.style.display = "none";
-				printResponse14();
+				document.getElementById("input0").style.display = "block";
+				if (person.goTo == 'Đi biển') {
+					res();
+					isStart = 0;
+				} else {
+					printResponse14();
+				}
 			}
 		});
 	}
@@ -445,7 +549,7 @@ const bot = function() {
 	};
 
 	const handleChoice = async function(e) {
-		// nếu không phải opstion hoặc là thẻ link a -> click
+		// nếu không phải option hoặc là thẻ link a -> click
 		if (!e.target.classList.contains('choice') || 'A' === e.target.tagName) {
 			// Target isn't a button, but could be a child of a button.
 			var button = e.target.closest('#bot-container .choice');
@@ -459,10 +563,7 @@ const bot = function() {
 		disableAllChoices();
 		printChoice(choice);
 		scrollContainer();
-		await sleep(200);
-		if (choice.dataset.next == 2) {
-			printResponse2();
-		} else if (choice.dataset.next == 4) {
+		if (choice.dataset.next == 4) {
 			person.gender = choice.innerHTML;
 			printResponse4();
 		} else if (choice.dataset.next == 5) {
@@ -489,15 +590,18 @@ const bot = function() {
 			person.bodyCondition = choice.innerHTML;
 			if (person.goTo == 'Đi biển') {
 				res();
+				isStart = 0;
 			} else {
 				printResponse14();
 			}
 		} else if (choice.dataset.next == 15) {
 			person.weather = choice.innerHTML;
 			res();
+			isStart = 0;
 		} else if (choice.dataset.next == 16) {
 			person.goTo = choice.innerHTML;
 			res();
+			isStart = 0;
 		} else if (choice.dataset.next == 17) {
 			person.goTo = choice.innerHTML;
 			printResponse14();
@@ -514,7 +618,11 @@ const bot = function() {
 		x[2].style.display = "none";
 		x[3].style.display = "none";
 		x[4].style.display = "none";
+		x[5].style.display = "none";
+		x[6].style.display = "none";
+		document.getElementById("input0").style.display = "block";
 		person = {};
+		isStart = 0;
 		disableAllChoices();
 		printResponse1();
 	}
